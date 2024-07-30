@@ -3,24 +3,27 @@ const form = document.forms['contact-form'];
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  
+
   // Show loading message
-  const popup = showPopup('Submitting your form, please wait...');
+  const popup = showPopup('Submitting your form, please wait...', false);
 
   fetch(scriptURL, { method: 'POST', body: new FormData(form) })
     .then(() => {
-      updatePopup(popup, 'Thank you! Your form is submitted successfully.');
+      updatePopup(popup, 'Thank you! Your form is submitted successfully.', true);
     })
     .catch((error) => {
-      updatePopup(popup, 'Error! Your form could not be submitted.');
+      updatePopup(popup, 'Error! Your form could not be submitted.', false);
       console.error('Error!', error.message);
     });
 });
 
-function showPopup(message) {
+function showPopup(message, isSuccess) {
   const popup = document.createElement('div');
   popup.className = 'popup';
   popup.textContent = message;
+  if (isSuccess) {
+    popup.classList.add('success');
+  }
 
   const closeButton = document.createElement('button');
   closeButton.textContent = 'Close';
@@ -34,8 +37,10 @@ function showPopup(message) {
   return popup;
 }
 
-function updatePopup(popup, message) {
+function updatePopup(popup, message, isSuccess) {
   popup.textContent = message;
+  popup.classList.toggle('success', isSuccess);
+
   const closeButton = document.createElement('button');
   closeButton.textContent = 'Close';
   closeButton.addEventListener('click', () => {
@@ -44,4 +49,3 @@ function updatePopup(popup, message) {
 
   popup.appendChild(closeButton);
 }
-

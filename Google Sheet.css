@@ -61,6 +61,20 @@ textarea {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
+  text-align: center;
+}
+
+.popup.success {
+  background-color: green;
+  color: white;
+}
+
+.popup.error {
+  color: red;
+}
+
+.popup.message {
+  color: green;
 }
 
 .popup button {
@@ -74,38 +88,5 @@ textarea {
 }
 
 .popup button:hover {
-  background-color: #333333;
+  background-color: darkgreen;
 }
-
-.popup.success {
-  color: green;
-}
-
-.popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  color: green; /* Text color */
-}
-
-.popup button {
-  margin-top: 10px;
-  padding: 5px 10px;
-  background-color: green; /* Background color */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.popup button:hover {
-  background-color: darkgreen; /* Darker green on hover */
-}
-
-

@@ -3,27 +3,24 @@ const form = document.forms['contact-form'];
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-
+  
   // Show loading message
-  const popup = showPopup('Submitting your form, please wait...', false);
+  const popup = showPopup('Submitting your form, please wait...');
 
   fetch(scriptURL, { method: 'POST', body: new FormData(form) })
     .then(() => {
-      updatePopup(popup, 'Thank you! Your form is submitted successfully.', true);
+      updatePopup(popup, 'Thank you! Your form is submitted successfully.');
     })
     .catch((error) => {
-      updatePopup(popup, 'Error! Your form could not be submitted.', false);
+      updatePopup(popup, 'Error! Your form could not be submitted.');
       console.error('Error!', error.message);
     });
 });
 
-function showPopup(message, isSuccess) {
+function showPopup(message) {
   const popup = document.createElement('div');
   popup.className = 'popup';
   popup.textContent = message;
-  if (isSuccess) {
-    popup.classList.add('success');
-  }
 
   const closeButton = document.createElement('button');
   closeButton.textContent = 'Close';
@@ -37,9 +34,8 @@ function showPopup(message, isSuccess) {
   return popup;
 }
 
-function updatePopup(popup, message, isSuccess) {
+function updatePopup(popup, message) {
   popup.textContent = message;
-  popup.classList.toggle('success', isSuccess);
 
   const closeButton = document.createElement('button');
   closeButton.textContent = 'Close';

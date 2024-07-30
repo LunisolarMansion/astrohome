@@ -45,3 +45,5 @@ function updatePopup(popup, message) {
 
   popup.appendChild(closeButton);
 }
+
+

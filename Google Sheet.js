@@ -5,14 +5,14 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   
   // Show loading message
-  const popup = showPopup('Submitting your form, please wait...');
+  const popup = showPopup('Submitting your form, please wait...', 'message');
 
   fetch(scriptURL, { method: 'POST', body: new FormData(form) })
     .then(() => {
-      updatePopup(popup, 'Thank you! Your form is submitted successfully.');
+      updatePopup(popup, 'Thank you! Your form is submitted successfully.', 'success');
     })
     .catch((error) => {
-      updatePopup(popup, 'Error! Your form could not be submitted.');
+      updatePopup(popup, 'Error! Your form could not be submitted.', 'error');
       console.error('Error!', error.message);
     });
 });
@@ -46,19 +46,3 @@ function updatePopup(popup, message, type) {
 
   popup.appendChild(closeButton);
 }
-
-// Use like this in your event listeners:
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  
-  const popup = showPopup('Submitting your form, please wait...', 'message');
-
-  fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-    .then(() => {
-      updatePopup(popup, 'Thank you! Your form is submitted successfully.', 'success');
-    })
-    .catch((error) => {
-      updatePopup(popup, 'Error! Your form could not be submitted.', 'error');
-      console.error('Error!', error.message);
-    });
-});

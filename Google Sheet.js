@@ -7,14 +7,23 @@ form.addEventListener('submit', (e) => {
   // Show loading message
   const popup = showPopup('Submitting your form, please wait...', 'message');
 
-  fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-    .then(() => {
-      updatePopup(popup, 'Thank you! Your form is submitted successfully.', 'success');
-    })
-    .catch((error) => {
-      updatePopup(popup, 'Error! Your form could not be submitted.', 'error');
-      console.error('Error!', error.message);
-    });
+  fetch(scriptURL, {
+    method: 'POST',
+    body: new FormData(form)
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+    return response.text();
+  })
+  .then(() => {
+    updatePopup(popup, 'Thank you! Your form is submitted successfully.', 'success');
+  })
+  .catch((error) => {
+    updatePopup(popup, 'Error! Your form could not be submitted.', 'error');
+    console.error('Error!', error.message);
+  });
 });
 
 function showPopup(message, type) {

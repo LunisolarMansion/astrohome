@@ -65,7 +65,7 @@ textarea {
 }
 
 .popup.success {
-  background-color: green;
+  background-color: #06D001;
   color: white;
 }
 
@@ -88,5 +88,5 @@ textarea {
 }
 
 .popup button:hover {
-  background-color: darkgreen;
+  background-color: #FF7EE2;
 }

@@ -2,7 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 18px;
 }
 
@@ -11,44 +11,55 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px; /* Added padding to prevent edge-to-edge stretching */
 }
 
 .container {
-  width: 500px;
+  width: 100%;
+  max-width: 500px; /* Max width for larger screens */
   padding: 30px;
   border: 1px solid #eeeeee;
   border-radius: 10px;
-  background-color: #A374D5;
+  background-color: #003b5b;
 }
 
 h4 {
   margin-bottom: 10px;
   font-size: 24px;
   color: white;
+  text-align: center;
 }
 
-input {
+input, textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 16px; /* Smaller font size for smaller screens */
 }
 
 textarea {
-  width: 100%;
-  padding: 10px;
+  resize: vertical; /* Allow vertical resize */
 }
 
 #submit {
   border: none;
   background-color: orangered;
   color: white;
-  width: 200px;
+  width: 100%; /* Full width on smaller screens */
+  max-width: 200px; /* Max width for larger screens */
   margin-top: 10px;
   border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 #submit:hover {
-  background-color: #FF7EE2;
+  background-color: #333333;
 }
 
 .popup {
@@ -65,7 +76,7 @@ textarea {
 }
 
 .popup.success {
-  background-color: #06D001;
+  background-color: green;
   color: white;
 }
 
@@ -88,5 +99,35 @@ textarea {
 }
 
 .popup button:hover {
-  background-color: #FF7EE2;
+  background-color: darkgreen;
 }
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+
+  input, textarea {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  #submit {
+    max-width: none; /* Removes max-width restriction on smaller screens */
+    padding: 10px;
+  }
+}
+
+
+
+
+
+

@@ -12,8 +12,11 @@
             <input type="email" name="your-email" placeholder="Email" required>
             <input type="text" name="your-mobile" placeholder="Mobile Number" pattern="[6-9]\d{9}" title="Enter a valid Indian mobile number" required>
             <input type="text" name="your-whatsapp" placeholder="WhatsApp Number" pattern="[6-9]\d{9}" title="Enter a valid Indian mobile number" required>
-            <select name="required-service" required>
-                <option value="">Required Service for</option>
+
+            <!-- Label for dropdown -->
+            <label for="required-service">Required Service for:</label>
+            <select name="required-service" id="required-service" required>
+                <option value="">Select a service</option>
                 <option value="Astrology Counselling">Astrology Counselling</option>
                 <option value="Horoscope Casting">Horoscope Casting</option>
                 <option value="Home Planning">Home Planning</option>
@@ -21,6 +24,7 @@
                 <option value="Landscape Design">Landscape Design</option>
                 <option value="Detailed Project Report">Detailed Project Report</option>
             </select>
+
             <textarea name="message" rows="7" placeholder="Your Message" required></textarea>
             <input type="submit" value="Submit" id="submit">
         </form>
